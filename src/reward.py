@@ -34,9 +34,9 @@ image = Image.open(filename)
 def reward():
     params = json.loads(request.args.get('json'))
 #    params = json.loads(params_str)
-    print(type(params))
+#    print(type(params))
 
-    print(params)
+#    print(params)
     with image as full_track:
         draw = ImageDraw.Draw(full_track)
         p = convert_simulation_to_imagePoint(params['x'], params['y'])
