@@ -40,13 +40,14 @@ def build_actual_response(data, status_code = 200):
   response.headers.add("Access-Control-Allow-Origin", "*")
   return response
 
+filename = "mappath.png"
+image = Image.open(filename)
 
 @reward_api.route("/reward")
 def reward():
     params = json.loads(request.args.get('json'))
     print(params)
-    filename = "mappath.png"
-    with Image.open(filename) as full_track:
+    with image as full_track:
         draw = ImageDraw.Draw(full_track)
         p = convert_simulation_to_imagePoint(params['x'], params['y'])
         r = 5
@@ -115,7 +116,7 @@ def reward():
 
         print("reward: " + str(reward))
 
-    return {'statusCode': 200, 'body': json.dumps({"reward": float(reward)})}
+    return json.dumps({"reward": float(reward)})
 
 
 def print_iterator(it):
