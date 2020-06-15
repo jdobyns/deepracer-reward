@@ -27,19 +27,6 @@ speed_granularity = 1
 ##
 reward_api = Blueprint('reward_api', __name__)
 
-
-def build_preflight_response():
-  response = make_response()
-  response.headers.add("Access-Control-Allow-Origin", "*")
-  response.headers.add('Access-Control-Allow-Headers', "*")
-  response.headers.add('Access-Control-Allow-Methods', "*")
-  return response
-
-def build_actual_response(data, status_code = 200):
-  response = make_response(data, status_code)
-  response.headers.add("Access-Control-Allow-Origin", "*")
-  return response
-
 filename = "mappath.png"
 image = Image.open(filename)
 
