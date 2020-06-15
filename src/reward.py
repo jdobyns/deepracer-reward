@@ -32,8 +32,8 @@ image = Image.open(filename)
 
 @reward_api.route("/reward")
 def reward():
-    params_str = json.loads(request.args.get('json'))
-    params = json.loads(params_str)
+    params = json.loads(request.args.get('json'))
+#    params = json.loads(params_str)
     print(type(params))
 
     print(params)
