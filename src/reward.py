@@ -45,7 +45,10 @@ image = Image.open(filename)
 
 @reward_api.route("/reward")
 def reward():
-    params = json.loads(request.args.get('json'))
+    params_str = json.loads(request.args.get('json'))
+    params = json.loads(params_str)
+    print(type(params))
+
     print(params)
     with image as full_track:
         draw = ImageDraw.Draw(full_track)
@@ -116,7 +119,8 @@ def reward():
 
         print("reward: " + str(reward))
 
-    return json.dumps({"reward": float(reward)})
+#   return json.dumps({"reward": float(reward)})
+    return {'statusCode': 200, 'body': json.dumps({"reward": float(reward)})}
 
 
 def print_iterator(it):
